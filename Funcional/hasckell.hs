@@ -4,7 +4,6 @@
     error -> lança erro no console
     ao chamar uma função e passar parametro negativo, passar entre parênteses
 -}
-
 cubo x = x*x*x
 
 fatorial n
@@ -21,6 +20,13 @@ fibonacci n
 
 soma x y = x + y
 
+imc peso altura
+  | imc <= 19 = "Você esta abaixo do peso!"
+  | imc <= 25 = "Peso normal."
+  | imc <= 32 = "Você esta acima do peso!"
+  | otherwise = "Você esta muito acima do peso!”  
+  where imc = peso / altura ^ 2
+
 main = do
   -- print $ cubo 2
   -- print $ fatorial 0
@@ -28,3 +34,4 @@ main = do
   -- print $ fatorial (-2)
   print $ fibonacci 5
   print $ soma 1 2
+  print $ imc 70 1.8
