@@ -1,0 +1,21 @@
+mulher(maria_elza).
+homem(ewerton).
+homem(nilo).
+homem(ercy).
+
+homem(gustavo).
+homem(juninho).
+
+mae(maria_elza, gustavo).
+mae(maria_elza, juninho).
+
+pai(ercy, ewerton).
+pai(ewerton, gustavo).
+pai(nilo, juninho).
+
+irmao_mae(X, Y):-mae(A, X), mae(A, Y), X \= Y.
+irmao_pai(X, Y):-pai(A, X), pai(A, Y), X \= Y.
+irmao(X, Y):-( ( mae(A, X), mae(A, Y) ); ( pai(A, X), pai(A, Y) ) ), (X \= Y).
+
+vozinho(X, Y):-pai(A, X), pai(Y, A).
+vozinho_ana_paula(X, Y):-pai(A, X), pai(Y, A), homem(X).
