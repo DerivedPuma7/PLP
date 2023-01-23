@@ -48,3 +48,6 @@ situacao_aluno(Aluno):- nota(Aluno, ResultadoAluno), ResultadoAluno >= 5.0, Resu
 
 -------------------------------------------------------------------------------------------------
 
+exibir(Lista, Cabeca, Cauda):-[Cabeca|Cauda] = Lista.
+chamar no console:
+exibir([a,b,c], cabeca, cauda)
