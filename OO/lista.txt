@@ -1,0 +1,31 @@
+1- Discurse sobre os pilares da Orientação a Objetos: Abstração, Encapsulamento, Herança e Polimorfismo.
+R: 
+.Abstração: capacidade/habilidade de representar objetos e estruturas do mundo real, abstraídos por meio de suas características e comportamentos.
+.Encapsulamento: é a característica da POO que permite a proteção aos dados, restringindo acesso a atributos e métodos.
+.Herança: heraça dita o aproveitamento de atributos/métodos  de classes semelhantes. Aqui é introduzido o conceito de classe pai e classe filha. Classe filha é aquela que herda os attr/métodos da classe pai. Possibilita reaproveitamento de código e facilita manutenção. Mas é importante ter cuidado ao usar herança, pois pode se tornar um problema lidar com o comportamento das classes.
+.Polimorfismo: é a habilidade das classes filhas sobrescreverem o comportamento da classe pai. A ideia principal é que a classe pai seja mais generalista, e a classe filha mais especializada.
+
+2- Utilizando a linguagem de programação orientada a objetos de sua preferência, crie uma classe para modelar um livro. Quais atributos e métodos são importantes para um sistema que tem um livro como objeto? Defina os métodos construtor e destrutor da classe.
+R:
+
+<?php
+class Livro {
+    private $titulo;
+    private $autor;
+    private $publicacao;
+    private $paginaAtual;
+
+    public __constructor(string $titulo, string $autor, Date $publicacao) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+        $this->publuicacao = $publicacao;
+    }
+    
+    public setPagina($pagina): void {
+        $this->paginaAtual = $pagina;
+    }
+
+    public getPaginaAtual(): int {
+        return $this->paginaAtual;
+    }
+}
