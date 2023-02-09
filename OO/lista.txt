@@ -18,7 +18,7 @@ class Livro {
     public __constructor(string $titulo, string $autor, Date $publicacao) {
         $this->titulo = $titulo;
         $this->autor = $autor;
-        $this->publuicacao = $publicacao;
+        $this->publicacao = $publicacao;
     }
     
     public setPagina($pagina): void {
@@ -29,3 +29,64 @@ class Livro {
         return $this->paginaAtual;
     }
 }
+
+3- Utilizando a linguagem de programação orientada a objetos de sua preferência,
+crie uma classe para representar datas usando três atributos: o dia, o mês, e o ano.
+Sua classe deve ter um construtor que inicializa os três atributos e verifica a
+validade dos valores fornecidos. Inclua também a possibilidade de construir o
+objeto sem parâmetros que inicializa a data com a data atual fornecida pelo
+sistema operacional. Forneça uma operação para avançar uma data para o dia
+seguinte
+
+<?php
+
+class Date {
+    const THIRD_DAY_MONTHS = ['01', '03', '05', '07', '08', '10', '12'];
+
+	private $day;
+	private $month;
+  	private $year;
+
+    public function __construct(string $day = null, string $month = null, string $year = null) {
+        $day = $day ?? date('d');
+        $month = $month ?? date('m');
+        $year = $year ?? date('Y');
+
+        if(intval($day) > 31) throw new Exception('Dia inválido');
+        if(intval($month) > 12) throw new Exception('Mês inválido');
+
+        $this->day = $day;
+        $this->month = $month;
+        $this->year = $year;	
+    }
+
+    public function getNextDay() {
+        if(
+            $this->month == '02' && 
+            intval($this->day) == 28
+        ) {
+            return '01';
+        }
+
+        if(
+            in_array($this->month, self::THIRD_DAY_MONTHS) && 
+            intval($this->day) == 31
+        ) {
+            return '01';
+        }
+
+        if(
+            !in_array($this->month, self::THIRD_DAY_MONTHS) && 
+            intval($this->day) == 30
+        ) {
+            return '01';
+        }
+
+        return intval($this->day) + 1;
+    }
+
+    public function getDate() {
+        return "$this->day/$this->month/$this->year";
+    }
+}
+?>
