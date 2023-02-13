@@ -90,3 +90,40 @@ class Date {
     }
 }
 ?>
+
+
+4-
+<?php
+
+class Pai {
+	public $contador;
+  
+	public function __construct() {
+    	$this->contador = 0;
+    }
+  
+  	public function getContador() {
+    	return $this->contador;
+    }
+  	
+  	public function addContador() {
+      $this->contador++;
+    }
+}
+
+class Filho {
+	public $nome;
+  	
+  	public function __construct($nome, $pai) {
+    	$this->nome = $nome;
+      	$pai->addContador();
+    }
+}
+
+$pai = new Pai();
+$filho1 = new Filho('gabes', $pai);
+$filho2 = new Filho('figs', $pai);
+
+echo $pai->getContador();
+
+?>
