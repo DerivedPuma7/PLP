@@ -95,7 +95,7 @@ class Date {
 4-
 <?php
 
-class Pai {
+class Sessao {
 	public $contador;
   
 	public function __construct() {
@@ -111,19 +111,21 @@ class Pai {
     }
 }
 
-class Filho {
+class Usuario {
 	public $nome;
+  	public $filmeAtual;
   	
-  	public function __construct($nome, $pai) {
+  	public function __construct($nome, $filme, $sessao) {
     	$this->nome = $nome;
-      	$pai->addContador();
+      	$this->filmeAtual = $filme;
+      	$sessao->addContador();
     }
 }
 
-$pai = new Pai();
-$filho1 = new Filho('gabes', $pai);
-$filho2 = new Filho('figs', $pai);
+$sessao = new Sessao();
+$usuario1 = new Usuario('gabes', 'avatar', $sessao);
+$usuario2 = new Usuario('figs', 'senhor dos aneis', $sessao);
 
-echo $pai->getContador();
+echo $sessao->getContador();
 
 ?>
