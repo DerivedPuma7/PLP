@@ -91,8 +91,14 @@ class Date {
 }
 ?>
 
+4- Quais os níveis de visibilidade utilizados no encapsulamento de atributos e métodos? Quais as características de cada um deles ?
+R:
+Private, protected e public.
+Private: permite acesso apenas dentro da classe, não é possível acessar métodos ou atributos por fora da classe.
+Protected: permite acesso para atributos e métodos apenas dentro da classe ou para classe extendidas (derivadas).
+Public: acesso aberto a atributos e métodos.
 
-4-
+5-
 <?php
 
 class Sessao {
@@ -129,3 +135,79 @@ $usuario2 = new Usuario('figs', 'senhor dos aneis', $sessao);
 echo $sessao->getContador();
 
 ?>
+
+6- O que é uma classe abstrata? Para que serve? Como implementar uma classe abstrata? Como forçar a implementação de métodos abstratos, nas classes que herdam a classe abstrata? Crie uma classe chamada Obra_de_arte, que seja abstrata e tenha o método abstrato definir_autor. Essa classe abstrata deve ser herdada pela classe criada no exercício 2.
+R:
+Uma classe abstrata é aquela que não pode ser instanciada. Não é possível realizar a instrução $classe = new ClasseAbstrata();
+Ela serve como um modelo para as classes derivadas, que por sua vez, deverão sobrescrever os métodos para realizar a implementação destes.
+É possível realizar uma implementação específica para cada método da classe que extender da classe abstrata. Dessa forma, cada uma terá uma implementação diferente, como for desejado.
+<?php
+
+
+abstract class ObraDeArte {
+  	private $autor;
+  
+	public function definirAutor($autor) {
+     	$this->autor = $autor;
+    }
+}
+
+class Livro extends ObraDeArte {
+    public $titulo;
+    public $autor;
+    public $publicacao;
+    public $paginaAtual;
+
+    public function __constructor(string $titulo, string $autor) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+    }
+  
+  	public function definirAutor($autor) {
+     	$this->autor = $autor;
+    }
+    
+    public function setPagina($pagina): void {
+        $this->paginaAtual = $pagina;
+    }
+
+    public function getPaginaAtual(): int {
+        return $this->paginaAtual;
+    }
+}
+
+$livro = new Livro('titulo', 'autor');
+$livro->definirAutor('autor 2');
+echo $livro->autor;
+
+?>
+
+7-
+
+8- Qual problema pode ocorrer em um cenário de Herança múltipla? Como as linguagens de programação lidam com ele?
+R:
+Pode ocorrer problemas de ambiguidade, quando as classe que são herdadas possuem atributos semelhantes, com nomes parecidos, ou até mesmo o mesmo atributo. Isso ocasiona dificuldade
+de manutenção quando não for tratado.
+Algumas linguagens de programação não permitem a herança múltipla (particularmente não gosto dessa prática, julgo como uma má prática)
+
+9- Para que servem os padrões de projeto de software, no cenário de Orientação a Objetos?
+Os padrões de projetos são soluções práticas e bastante difundidas no cenário de desenvolvimento de software, que se propõem a solucionar problemas corriqueiros durante a prática
+da Orientação a Objetos. Alguns exemplos são: Singleton, Observer, Adapter, Bridge, entre outros.
+
+11- Como representar a agregação de classes?
+Agregação é a associação em que uma classe contém objetos de outra classe.
+Na UML, agregação é representado como um losango vazado e uma linha sólida.
+
+13- Diferencie Associação, Agregação e Composição de objetos.
+.Associação: é a relação entre classes em que uma não depende da outra para existir. Algo no sentido de "usar um";
+.Agregação: é a relação entre classes em que uma classe pode conter objetos de outra classe, mas esses objetos podem existir independentemente da classe que os contém. 
+Algo no sentido de "ter um" ou "ser parte de";
+.Composição: é a relação entre classes em que uma classe é composta por objetos de outra classe, e esses objetos só existem enquanto a classe que os contém existir.
+Algo no sentido de  "ser um" ou "todo/parte";
+
+14.O que são acoplamento e coesão na Orientação a objetos?
+.Acoplamento se refere a quanto uma classe depende de outra. Basicamente, quanto maior o acoplamento, maior a dificuldade de manutenção e evolução do código, por que vários
+componentes são interligados entre si;
+.Coesão se refere ao grau de relação entre os elementos internos de uma classe. Nesse caso, quanto mais coeso for uma classe, melhor é, pois significa que os métodos,
+atributos, relações são bem distintos e possuem responsabilidades únicas;
+
